@@ -5,6 +5,7 @@ import LoginForm from './components/loginForm'
 import Nav from './components/nav'
 import NotFound from './components/notFound'
 import './App.css'
+import GameContainer from './GameContainer';
 
 class App extends React.Component {
    state = {
@@ -43,7 +44,8 @@ class App extends React.Component {
                      <Profile user={this.state.user} /> :
                      <Redirect to="/login" />)
                }
-               } />
+               }
+               />
 
                <Route exact path="/login" render={() => {
                   return (this.state.user ?
@@ -54,6 +56,7 @@ class App extends React.Component {
                />
                <Route component={NotFound} />
             </Switch>
+            {this.state.user !== null && <GameContainer user={this.state.user}/>}
          </Fragment>
       )
    }

@@ -1,12 +1,6 @@
 import React from "react";
 import { Card, Image } from "semantic-ui-react";
 
-/* props: {
-  avatar: 'someURL',
-  username: 'chandler Bing',
-  bio: 'i like eggs'
-} */
-
 const Profile = (props) => {
    return props.user ? (
       <Card>
@@ -18,7 +12,7 @@ const Profile = (props) => {
          </Card.Content>
       </Card>
 
-   ) : null
+   ) : null         
 }
 
 export default Profile;
