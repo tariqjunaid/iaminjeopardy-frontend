@@ -1,27 +1,62 @@
-import React from 'react';
-// import './App.css';
-import GameContainer from './GameContainer'
+import React, { Fragment } from 'react'
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
+import Profile from './components/profile'
+import LoginForm from './components/loginForm'
+import Nav from './components/nav'
+import NotFound from './components/notFound'
+import './App.css'
 
-function App() {
-  return (
-    <div className="App">
+class App extends React.Component {
+   state = {
+      user: null
+   }
 
-    {/*
-      <form>
-    <label>
-    Enter UserName:
-    <input type="text" name="username" />
-    Enter Password:
-    <input type="text" name="username" />
-    </label>
-    <input type="submit" value="submit" />
-    </form>
-    */}
+   updateCurrentUser = (user) => {
+      this.setState({ user })
+   }
 
-    <GameContainer className="row"/>
+   componentDidMount() {
+      //check to see if there is a jwt?
+      //if there is, fetch to get the user asnd update the user state
+      let token = localStorage.getItem("jwt")
+      if (token) {
+         fetch("http://localhost:3000/profile", {
+            headers: { "Authentication": `Bearer ${token}` }
+         })
+            .then(res => res.json())
+            .then(user => {
+               this.updateCurrentUser(user)
+            })
+      }
+      //if not, let them log in
+   }
 
-    </div>
-  );
+   render() {
+      return (
+         <Fragment>
+            <Nav logged_in={this.state.user} updateCurrentUser={this.updateCurrentUser} />
+            <Switch>
+               <Route exact path="/" render={() => <Redirect to="/profile" />} />
+
+               <Route exact path="/profile" render={() => {
+                  return (this.state.user ?
+                     <Profile user={this.state.user} /> :
+                     <Redirect to="/login" />)
+               }
+               } />
+
+               <Route exact path="/login" render={() => {
+                  return (this.state.user ?
+                     <Redirect to="/profile" /> :
+                     <LoginForm updateCurrentUser={this.updateCurrentUser} />)
+               }
+               }
+               />
+               <Route component={NotFound} />
+            </Switch>
+         </Fragment>
+      )
+   }
 }
 
-export default App;
+export default withRouter(App)
