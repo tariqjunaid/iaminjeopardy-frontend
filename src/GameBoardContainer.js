@@ -7,6 +7,7 @@ render(){
     <div>
     I am a GameBoardContainer
     </div>
-  )
+          )
+   }
 }
-}
+export default GameBoardContainer

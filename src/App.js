@@ -1,6 +1,7 @@
 import React from 'react';
-import './App.css';
+// import './App.css';
 import GameContainer from './GameContainer'
+
 function App() {
   return (
     <div className="App">
@@ -17,7 +18,7 @@ function App() {
     </form>
     */}
 
-    <GameContainer />
+    <GameContainer className="row"/>
 
     </div>
   );
