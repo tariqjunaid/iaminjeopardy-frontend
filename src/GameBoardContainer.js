@@ -7,6 +7,7 @@ import { Card } from 'semantic-ui-react'
 const API = 'http://jservice.io/api/random?count=9'
 
 class GameBoardContainer extends React.Component{
+<<<<<<< HEAD
    constructor() {
       super()
       this.state = {
@@ -64,6 +65,23 @@ class GameBoardContainer extends React.Component{
             </Card.Group>
             
          
+=======
+  componentDidMount(){
+    fetch("http://jservice.io/api/random?count=100")
+    .then(response => response.json())
+    .then(data => console.log(data))
+  }
+   render(){
+      return (
+         <div>
+         <Countdown className="column" date={Date.now() + 600000}>
+            <Completionist />
+         </Countdown>
+
+
+
+
+>>>>>>> 3cd43dc2057d8949a867321dd71140ed1142c12b
          </div>
       )
    }
