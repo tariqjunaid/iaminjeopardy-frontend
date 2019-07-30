@@ -7,11 +7,11 @@ class GameBoardContainer extends React.Component{
    render(){
       return (
          <div>
-            I am a GameBoardContainer
-            <br />
-            <Countdown className="column" date={Date.now() + 150000}>
-               <Completionist />
-            </Countdown>
+         <Countdown className="column" date={Date.now() + 600000}>
+            <Completionist />
+         </Countdown>
+
+
          </div>
       )
    }

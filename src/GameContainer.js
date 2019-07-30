@@ -8,15 +8,24 @@ class GameContainer extends React.Component{
       super()
       this.state= {
          totalPoints: 0,
+         showBoard: false
       }
+   }
+
+   startGameClick = () => {
+     console.log("i was clicked")
+     this.setState({
+       showBoard: true
+     })
    }
 
    render(){
       return(
          <div>
-            <Button>Start Game</Button>
             <GameInfoContainer user={this.props.user} points={this.state.totalPoints} />
-            <GameBoardContainer user={this.props.user} />
+
+            {this.state.showBoard ? <GameBoardContainer user={this.props.user}/> : <Button onClick={this.startGameClick}>Start Game</Button>}
+
          </div>
       )
    }

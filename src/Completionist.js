@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Completionist = () => {
-  return (<span>Time Over</span>)
+  return (<span>Time's Over</span>)
 }
 
 export default Completionist
