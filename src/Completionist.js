@@ -1,7 +1,7 @@
 import React from 'react'
 
-const Completionist = () => {
-  return (<span>Time Over</span>)
-}
+const Completionist = () => (
+   alert('Time Over')
+)
 
-export default Completionist
+export default Completionist;

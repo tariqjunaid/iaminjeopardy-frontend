@@ -6,6 +6,8 @@ import Nav from './components/nav'
 import NotFound from './components/notFound'
 import './App.css'
 import GameContainer from './GameContainer';
+import { Button } from "semantic-ui-react";
+import MyCountdown from './components/countdown'
 
 class App extends React.Component {
    state = {
@@ -15,7 +17,7 @@ class App extends React.Component {
    updateCurrentUser = (user) => {
       this.setState({ user })
    }
-
+   
    componentDidMount() {
       //check to see if there is a jwt?
       //if there is, fetch to get the user asnd update the user state
@@ -36,6 +38,7 @@ class App extends React.Component {
       return (
          <Fragment>
             <Nav logged_in={this.state.user} updateCurrentUser={this.updateCurrentUser} />
+            
             <Switch>
                <Route exact path="/" render={() => <Redirect to="/profile" />} />
 
@@ -56,7 +59,8 @@ class App extends React.Component {
                />
                <Route component={NotFound} />
             </Switch>
-            {this.state.user !== null && <GameContainer user={this.state.user}/>}
+            {this.state.user !== null && <GameContainer user={this.state.user} />}
+               
          </Fragment>
       )
    }

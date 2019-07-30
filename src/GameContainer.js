@@ -6,17 +6,36 @@ import { Button } from "semantic-ui-react";
 class GameContainer extends React.Component{
    constructor(){
       super()
-      this.state= {
-         totalPoints: 0,
+      this.state = {
+         startGame: false,
+         points: 0
       }
    }
 
-   render(){
-      return(
+   handlePoints = () => {
+      this.setState({ points: this.state.points + 10 });
+   }
+
+   handleClick = () => { 
+      this.setState({ startGame: !this.state.startGame });
+    }
+
+   render() {
+      return (
          <div>
-            <Button>Start Game</Button>
-            <GameInfoContainer user={this.props.user} points={this.state.totalPoints} />
-            <GameBoardContainer user={this.props.user} />
+             <Button onClick={this.handleClick}>
+                Start Game
+             </Button>
+            
+             <div>
+               {
+               this.state.startGame === true &&
+               <div>
+                     <GameInfoContainer user={this.props.user} points={this.state.points} handlePoints={this.handlePoints}/>
+                     <GameBoardContainer user={this.props.user} points={this.state.points} handlePoints={this.handlePoints} />
+               </div>
+               }
+            </div>
          </div>
       )
    }

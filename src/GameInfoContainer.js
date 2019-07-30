@@ -1,22 +1,25 @@
-import React from 'react'
-import './App.css';
-import { Card, CardHeader, CardContent } from "semantic-ui-react";
-
+import React from 'react';
+import { Grid, Segment } from "semantic-ui-react";
+import MyCountdown from './components/countdown';
 
 class GameInfoContainer extends React.Component{
    render(){
       return(
-         <div>
-            IAMINJEOPARDY
-            <div>
-               <Card>
-                  <CardContent>
-                     <Card.Header>Username: {this.props.user.username}</Card.Header>
-                     <Card.Header>Points: {this.props.points}</Card.Header>
-                  </CardContent>
-            </Card>
-            </div>
-         </div>
+            <Grid columns='equal'>
+               <Grid.Row>
+                  <Grid.Column>
+                     <Segment>Username: <strong>{this.props.user.username}</strong></Segment>
+                  </Grid.Column>
+                  <Grid.Column>
+                     <Segment>  
+                        <MyCountdown />
+                     </Segment>
+                  </Grid.Column>
+                  <Grid.Column>
+                     <Segment>Points: <strong>{this.props.points}</strong></Segment>
+                  </Grid.Column>
+            </Grid.Row>
+         </Grid>
       )
    }
 }
