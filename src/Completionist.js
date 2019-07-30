@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { Component } from 'react';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 
-<<<<<<< HEAD
-const Completionist = () => (
-   alert('Time Over')
-)
-=======
-const Completionist = () => {
-  return (<span>Time's Over</span>)
+
+class Completionist extends Component {
+
+   componentDidMount() {
+      console.log(this.props.router)
+   }
+   
+   
+   render() { 
+      return (
+         <div>
+           'hey'
+         </div>
+        
+      );
+   }
 }
->>>>>>> 3cd43dc2057d8949a867321dd71140ed1142c12b
-
+ 
 export default Completionist;

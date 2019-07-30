@@ -6,8 +6,7 @@ import Nav from './components/nav'
 import NotFound from './components/notFound'
 import './App.css'
 import GameContainer from './GameContainer';
-import { Button } from "semantic-ui-react";
-import MyCountdown from './components/countdown'
+import ResultsContainer from './ResultsContainer';
 
 class App extends React.Component {
    state = {
@@ -41,7 +40,7 @@ class App extends React.Component {
             
             <Switch>
                <Route exact path="/" render={() => <Redirect to="/profile" />} />
-
+               <Route exact path="/results" render={() => <ResultsContainer />} />
                <Route exact path="/profile" render={() => {
                   return (this.state.user ?
                      <Profile user={this.state.user} /> :

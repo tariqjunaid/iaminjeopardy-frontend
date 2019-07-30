@@ -12,7 +12,7 @@ class GameInfoContainer extends React.Component{
                   </Grid.Column>
                   <Grid.Column>
                      <Segment>  
-                        <MyCountdown />
+                     <MyCountdown handleResults={this.props.handleResults}/>
                      </Segment>
                   </Grid.Column>
                   <Grid.Column>
