@@ -43,7 +43,7 @@ class GameBoardContainer extends React.Component{
 
    render(){
       return (
-         <div className='grid'>      
+         <div className='grid'>
             <Card.Group itemsPerRow={3}>
                {
                this.state.questions.map(ques => {

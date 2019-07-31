@@ -10,28 +10,26 @@ class MyCountdown extends Component {
       }
    }
 
-   // shouldComponentUpdate() {
-   //    return false
-   // }
+
 
    componentDidMount() {
       this.interval = setInterval(() => {
          this.countDown();
       }, 1000)
    }
-   
-   //WARNING! To be deprecated in React v17. Use componentDidUpdate instead.
-   componentWillUnmount() {
-      clearInterval(this.interval)
+
+   componentWillUnmount(){
+     clearInterval(this.interval)
    }
+
+
    countDown = () => {
       this.setState({ countDown: this.state.countDown - 1 })
       if (this.state.countDown === 0)
          clearInterval(this.interval)
    }
 
-   // test = () => this.props.handleResults()
-   
+
    render() {
       return (
          <div>
