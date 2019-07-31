@@ -1,15 +1,11 @@
 import React from "react";
-import { Card } from "semantic-ui-react";
+import { Header } from "semantic-ui-react";
 
 const Profile = (props) => {
    return props.user ? (
-      <Card>
-         {/* <Image src={props.user.avatar} /> */}
-         <Card.Content>
-            <Card.Header>Welcome {props.user.username}!</Card.Header>
-            {/* <Card.Description>{props.user.bio}</Card.Description> */}
-         </Card.Content>
-      </Card>
+      <Header as='h5' block>
+         Welcome {props.user.username}!
+      </Header>
    ) : null
 }
 

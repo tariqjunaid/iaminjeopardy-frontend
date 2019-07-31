@@ -23,7 +23,10 @@ const Nav = (props) => {
                   active={pathname === "/profile"}
                />
                <Menu.Menu position="right">
-                  <Menu.Item to="/logout" name="Logout" onClick={logout} />
+                  <Menu.Item
+                     to="/logout"
+                     name="Logout"
+                     onClick={logout} />
                </Menu.Menu>
             </Fragment>
          ) : (

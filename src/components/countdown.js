@@ -6,7 +6,7 @@ class MyCountdown extends Component {
       super(props);
 
       this.state = {
-         countDown: 10
+         countDown: 120
       }
    }
 
@@ -16,11 +16,14 @@ class MyCountdown extends Component {
 
    componentDidMount() {
       this.interval = setInterval(() => {
-         // console.log(this.state.countDown)
          this.countDown();
       }, 1000)
    }
    
+   //WARNING! To be deprecated in React v17. Use componentDidUpdate instead.
+   componentWillUnmount() {
+      clearInterval(this.interval)
+   }
    countDown = () => {
       this.setState({ countDown: this.state.countDown - 1 })
       if (this.state.countDown === 0)
@@ -31,13 +34,14 @@ class MyCountdown extends Component {
    
    render() {
       return (
+         <div>
+            {this.state.countDown === 0 ? this.props.handleResults() : this.state.countDown}
+         </div>
+         
          // <Countdown className="column" date={Date.now() + 15000}>
          //    {/* <Completionist /> */}
          //    <Completionist handleResults={this.props.handleResults}/>
          // </Countdown>
-         <div>
-            {this.state.countDown === 0 ? this.props.handleResults() : this.state.countDown}
-         </div>
       )
    }
 }

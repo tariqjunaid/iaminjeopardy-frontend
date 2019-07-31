@@ -44,3 +44,7 @@
   display: table;
   clear: both;
 }
+
+.result {
+   align-items: center
+}

@@ -2,7 +2,9 @@ import React from 'react';
 import GameInfoContainer from './GameInfoContainer';
 import GameBoardContainer from './GameBoardContainer';
 import { Button } from "semantic-ui-react";
-import ResultsContainer from './ResultsContainer'
+import ResultsContainer from './ResultsContainer';
+
+const API = 'http://localhost:3000/games';
 
 class GameContainer extends React.Component{
    constructor(){
@@ -23,9 +25,8 @@ class GameContainer extends React.Component{
          startGame: false,
          showResults: true
       });
-      console.log(this.props)
 
-      fetch('http://localhost:3000/games', {
+      fetch(API, {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json',
@@ -55,7 +56,7 @@ class GameContainer extends React.Component{
                   </div>
                   : null
                }
-               {this.state.showResults === true ? <ResultsContainer points={this.state.points}/> : null} 
+               {this.state.showResults === true ? <ResultsContainer user={this.props.user} points={this.state.points}/> : null} 
             </div>
          </div>
       )

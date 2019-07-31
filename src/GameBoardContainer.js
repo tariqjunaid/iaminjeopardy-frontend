@@ -14,14 +14,17 @@ class GameBoardContainer extends React.Component{
    }
 
    submitAnswer = (ques) => {
-      if (ques.answer.toLowerCase() === this.state.myAnswer.toLowerCase()) {
+      let reformatAns = ques.answer
+      reformatAns = reformatAns.replace(/[^\w\s]/gi, '')
+      console.log(reformatAns)
+      if (reformatAns.toLowerCase() === this.state.myAnswer.toLowerCase()) {
          this.props.handlePoints()
       }
       let updatedQuestions = this.state.questions.map(question => {
          return question.id === ques.id ? { ...question, isSubmitted: true } : question
       })
       this.setState({ questions: updatedQuestions })
-      console.log(ques);
+      // console.log(ques);
    }
 
    getInput = (e) => {
