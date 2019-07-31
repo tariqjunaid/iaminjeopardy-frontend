@@ -2,8 +2,6 @@ import React from 'react'
 import GameCard from "./components/GameCard";
 import { Card } from 'semantic-ui-react'
 
-
-
 const API = 'http://jservice.io/api/random?count=9'
 
 class GameBoardContainer extends React.Component{
@@ -18,19 +16,13 @@ class GameBoardContainer extends React.Component{
    submitAnswer = (ques) => {
       if (ques.answer.toLowerCase() === this.state.myAnswer.toLowerCase()) {
          this.props.handlePoints()
-         console.log('i am changing timer...');
-         
       }
       let updatedQuestions = this.state.questions.map(question => {
          return question.id === ques.id ? { ...question, isSubmitted: true } : question
       })
-      this.setState({
-         questions: updatedQuestions
-      })
+      this.setState({ questions: updatedQuestions })
       console.log(ques);
    }
-
-   
 
    getInput = (e) => {
       let answer = e.target.value
@@ -39,34 +31,30 @@ class GameBoardContainer extends React.Component{
 
    componentDidMount() {
       fetch(API)
-         .then(response => response.json())
-         .then(data => {
-            console.log(data);
-            this.setState({ questions: data });
-         })
+      .then(response => response.json())
+      .then(data => {
+         console.log(data);
+         this.setState({ questions: data });
+      })
    }
 
    render(){
       return (
-         <div className='grid'>
-            
-               <Card.Group itemsPerRow={3}>
-                  {
-                     this.state.questions.map(ques => {
-                        return <GameCard
-                           key={ques.id}
-                           ques={ques}
-                           getInput={this.getInput}
-                           submitAnswer={this.submitAnswer}
-                        />
-                     })
-                  }
+         <div className='grid'>      
+            <Card.Group itemsPerRow={3}>
+               {
+               this.state.questions.map(ques => {
+                  return <GameCard
+                     key={ques.id}
+                     ques={ques}
+                     getInput={this.getInput}
+                     submitAnswer={this.submitAnswer} />
+                  })
+               }
             </Card.Group>
-            
-         
          </div>
       )
    }
 }
 
-export default GameBoardContainer
+export default GameBoardContainer;

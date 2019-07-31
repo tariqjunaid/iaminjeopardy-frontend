@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
-
 
 class Completionist extends Component {
 
@@ -8,14 +6,10 @@ class Completionist extends Component {
       console.log(this.props.router)
    }
    
-   
    render() { 
       return (
-         <div>
-           'hey'
-         </div>
-        
-      );
+         <div>'hey'</div>
+      )
    }
 }
  

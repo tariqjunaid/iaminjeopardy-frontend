@@ -6,7 +6,7 @@ class MyCountdown extends Component {
       super(props);
 
       this.state = {
-        countDown: 15
+         countDown: 10
       }
    }
 
@@ -21,21 +21,15 @@ class MyCountdown extends Component {
       }, 1000)
 
    }
-
    
    countDown = () => {
-   
-   this.setState({
-         countDown: this.state.countDown - 1
-      })
+         this.setState({ countDown: this.state.countDown - 1 })
    }
 
    test = () => {
       this.props.handleResults()
    }
    
-
-
    render() {
       return (
          // <Countdown className="column" date={Date.now() + 15000}>
@@ -43,11 +37,10 @@ class MyCountdown extends Component {
          //    <Completionist handleResults={this.props.handleResults}/>
          // </Countdown>
          <div>
-            {
-               this.state.countDown === 0 ? this.test() : this.state.countDown
-            }
+            {this.state.countDown === 0 ? this.test() : this.state.countDown}
          </div>
       )
    }
 }
+
 export default MyCountdown;

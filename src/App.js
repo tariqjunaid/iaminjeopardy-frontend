@@ -13,9 +13,7 @@ class App extends React.Component {
       user: null
    }
 
-   updateCurrentUser = (user) => {
-      this.setState({ user })
-   }
+   updateCurrentUser = user => this.setState({ user })
    
    componentDidMount() {
       //check to see if there is a jwt?
@@ -25,10 +23,10 @@ class App extends React.Component {
          fetch("http://localhost:3000/profile", {
             headers: { "Authentication": `Bearer ${token}` }
          })
-            .then(res => res.json())
-            .then(user => {
-               this.updateCurrentUser(user)
-            })
+         .then(res => res.json())
+         .then(user => {
+            this.updateCurrentUser(user)
+         })
       }
       //if not, let them log in
    }
@@ -37,32 +35,19 @@ class App extends React.Component {
       return (
          <Fragment>
             <Nav logged_in={this.state.user} updateCurrentUser={this.updateCurrentUser} />
-            
             <Switch>
                <Route exact path="/" render={() => <Redirect to="/profile" />} />
                <Route exact path="/results" render={() => <ResultsContainer />} />
                <Route exact path="/profile" render={() => {
-                  return (this.state.user ?
-                     <Profile user={this.state.user} /> :
-                     <Redirect to="/login" />)
-               }
-               }
-               />
-
+                  return (this.state.user ? <Profile user={this.state.user} /> : <Redirect to="/login" />)}}/>
                <Route exact path="/login" render={() => {
-                  return (this.state.user ?
-                     <Redirect to="/profile" /> :
-                     <LoginForm updateCurrentUser={this.updateCurrentUser} />)
-               }
-               }
-               />
+                  return (this.state.user ? <Redirect to="/profile" /> : <LoginForm updateCurrentUser={this.updateCurrentUser} />)}}/>
                <Route component={NotFound} />
             </Switch>
             {this.state.user !== null && <GameContainer user={this.state.user} />}
-               
          </Fragment>
       )
    }
 }
 
-export default withRouter(App)
+export default withRouter(App);

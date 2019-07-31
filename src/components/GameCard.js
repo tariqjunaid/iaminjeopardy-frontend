@@ -10,21 +10,17 @@ const GameCard = props => {
             <Card.Header>{ques.category.title}</Card.Header>
             <Card.Meta>{ques.value}</Card.Meta>
             <Card.Description>{ques.question}</Card.Description>
-         </Card.Content>
-         
+         </Card.Content> 
          <TextArea onChange={props.getInput} placeholder='Type your answer' />
-         
          <Card.Content extra>   
-            {ques.isSubmitted === true ? (
-               <Button disabled>Submitted</Button>
-            ) : (
-               <Button onClick={() => props.submitAnswer(ques)} basic color='green'>Submit</Button>
-            )}
+            {
+               ques.isSubmitted === true ? 
+                  <Button disabled>Submitted</Button> : 
+                  <Button onClick={() => props.submitAnswer(ques)} basic color='green'>Submit</Button>
+            }
          </Card.Content>
       </Card>
    )
-};
+}
 
 export default GameCard;
-
-
