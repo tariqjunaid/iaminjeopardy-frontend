@@ -14,7 +14,10 @@ class GameBoardContainer extends React.Component{
    }
 
    submitAnswer = (ques) => {
-      if (ques.answer.toLowerCase() === this.state.myAnswer.toLowerCase()) {
+     let reformatAns = ques.answer
+     reformatAns = reformatAns.replace(/[^\w\s]/gi, '')
+     console.log(reformatAns)
+      if (reformatAns.toLowerCase() === this.state.myAnswer.toLowerCase()) {
          this.props.handlePoints()
       }
       let updatedQuestions = this.state.questions.map(question => {
@@ -40,7 +43,7 @@ class GameBoardContainer extends React.Component{
 
    render(){
       return (
-         <div className='grid'>      
+         <div className='grid'>
             <Card.Group itemsPerRow={3}>
                {
                this.state.questions.map(ques => {

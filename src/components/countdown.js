@@ -6,35 +6,33 @@ class MyCountdown extends Component {
       super(props);
 
       this.state = {
-         countDown: 10
+         countDown: 12000
       }
    }
 
-   // shouldComponentUpdate() {
-   //    return false
-   // }
+
 
    componentDidMount() {
       this.interval = setInterval(() => {
-         // console.log(this.state.countDown)
          this.countDown();
       }, 1000)
    }
-   
+
+   componentWillUnmount(){
+     clearInterval(this.interval)
+   }
+
+
    countDown = () => {
       this.setState({ countDown: this.state.countDown - 1 })
       if (this.state.countDown === 0)
          clearInterval(this.interval)
    }
 
-   // test = () => this.props.handleResults()
-   
+
    render() {
       return (
-         // <Countdown className="column" date={Date.now() + 15000}>
-         //    {/* <Completionist /> */}
-         //    <Completionist handleResults={this.props.handleResults}/>
-         // </Countdown>
+      
          <div>
             {this.state.countDown === 0 ? this.props.handleResults() : this.state.countDown}
          </div>
