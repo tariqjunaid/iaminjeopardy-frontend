@@ -25,14 +25,14 @@ class GameContainer extends React.Component{
       });
       console.log(this.props)
 
-      fetch(`http://localhost:3000/games/${this.props.user.id}`, {
-         method: 'PATCH',
+      fetch('http://localhost:3000/games', {
+         method: 'POST',
          headers: {
             'Content-Type': 'application/json',
-            // Accept: 'application/json'
+            'Accept': 'application/json'
          },
          body: JSON.stringify({
-            games: {
+            game: {
                user_id: this.props.user.id,
                score: this.state.points
             }
@@ -45,7 +45,8 @@ class GameContainer extends React.Component{
    render() {
       return (
          <div>
-            <Button onClick={this.handleClick}>Start Game</Button>
+            {this.state.startGame === false &&
+               <Button onClick={this.handleClick}>Start Game</Button>}
             <div>
                { this.state.startGame === true ?
                   <div>

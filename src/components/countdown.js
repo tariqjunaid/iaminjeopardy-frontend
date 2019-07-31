@@ -15,20 +15,19 @@ class MyCountdown extends Component {
    // }
 
    componentDidMount() {
-      setInterval(() => {
-         console.log(this.state.countDown)
+      this.interval = setInterval(() => {
+         // console.log(this.state.countDown)
          this.countDown();
       }, 1000)
-
    }
    
    countDown = () => {
-         this.setState({ countDown: this.state.countDown - 1 })
+      this.setState({ countDown: this.state.countDown - 1 })
+      if (this.state.countDown === 0)
+         clearInterval(this.interval)
    }
 
-   test = () => {
-      this.props.handleResults()
-   }
+   // test = () => this.props.handleResults()
    
    render() {
       return (
@@ -37,7 +36,7 @@ class MyCountdown extends Component {
          //    <Completionist handleResults={this.props.handleResults}/>
          // </Countdown>
          <div>
-            {this.state.countDown === 0 ? this.test() : this.state.countDown}
+            {this.state.countDown === 0 ? this.props.handleResults() : this.state.countDown}
          </div>
       )
    }

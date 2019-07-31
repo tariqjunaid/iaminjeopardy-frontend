@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react'
-import { Header, Image } from 'semantic-ui-react'
+import { Header } from 'semantic-ui-react'
 
 const NotFound = () => (
    <Fragment>
-      <Header size="huge" inverted color="purple">
+      <Header size="huge" inverted color="red">
          Page Not Found
       </Header>
-      <Image src="https://thumbs.dreamstime.com/z/senior-man-shrugging-his-shoulders-8775727.jpg" />
+      {/* <Image src="https://thumbs.dreamstime.com/z/senior-man-shrugging-his-shoulders-8775727.jpg" /> */}
    </Fragment>
 )
 
