@@ -12,7 +12,7 @@
     "react-flipcard": "^0.2.1",
     "react-flippy": "^0.1.5",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
+    "react-scripts": "5.0.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.87.3"
   },
